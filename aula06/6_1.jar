@@ -1,0 +1,6 @@
+main:
+    and $t2, $t0, $t1  # t2 = t0 AND t1
+    or $t3, $t0, $t1   # t3 = t0 OR t1
+    nor $t4, $t0, $t1  # t4 = t0 NOR t1
+    xor $t5, $t0, $t1  # t5 = t0 XOR t1
+    not $t6, $t0       # t6 = NOT t0 (destino/sorce)

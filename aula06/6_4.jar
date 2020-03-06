@@ -1,0 +1,33 @@
+.data
+espaco: .asciiz "\n"
+fim:    .asciiz "\n FIM!"
+    .text
+    .globl main
+    
+main:
+    li $t1, 0xF0000000
+    li $t0, 28
+    
+while:
+    beq $t0, $0, end
+    
+    srl $t1, $t1, 4
+    subi $t0, $t0, 4
+    move $a0, $t1
+    
+    li $v0, 1
+    syscall
+    
+    la $a0, espaco
+    li $v0, 4
+    syscall
+    
+    j while
+    
+end:
+    la $a0, fim
+    li $v0, 4
+    syscall
+    
+    li $v0, 10
+    syscall

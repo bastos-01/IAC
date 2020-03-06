@@ -1,0 +1,40 @@
+.data 
+	prompt: .asciiz  "Introduza um numero\n"
+	strpar: .asciiz  "O numero é par\n"
+	strimp: .asciiz "O numero é impar\n"
+	fim: .asciiz "fim!"
+.text
+
+.globl main
+
+main:
+	la $a0, prompt
+	li $v0, 4
+	syscall
+	
+	li $v0, 5
+	syscall
+	
+	move $t1, $v0
+	
+	andi $t2, $t1, 1
+	bne $t2, $0, else
+	
+	la $a0, strpar
+	li $v0, 4
+	syscall
+	
+	j exit
+else:	
+	la $a0, strimp
+	li $v0, 4
+	syscall
+	
+exit:
+	la $a0, fim
+	li $v0, 4
+	syscall
+	
+	li $v0, 10
+	syscall
+	
